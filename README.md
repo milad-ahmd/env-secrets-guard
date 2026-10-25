@@ -11,6 +11,8 @@
 
 [Install](#-install) · [Usage](#-usage) · [How it works](skills/env-secrets-guard/SKILL.md) · [All skills](https://github.com/milad-ahmd/agent-skills)
 
+<img src="assets/demo.gif" alt="env-secrets-guard demo (real output)" width="760"/>
+
 </div>
 
 > Part of **[agent-skills](https://github.com/milad-ahmd/agent-skills)**, a growing collection of practical skills for AI coding agents.

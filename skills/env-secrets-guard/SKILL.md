@@ -9,7 +9,14 @@ Stop secrets from leaving the machine, and clean up properly if they already hav
 
 ## 1. Scan
 
-Prefer a dedicated scanner if one is installed:
+Run the bundled scanner first. It needs only Python 3 and never prints full secret values:
+
+```bash
+python3 scripts/scan_secrets.py .             # tracked files
+python3 scripts/scan_secrets.py . --history   # + every commit in git history
+```
+
+For deeper coverage, also use a dedicated scanner if one is installed:
 
 ```bash
 gitleaks detect --source . --redact -v      # working tree + history
@@ -45,3 +52,9 @@ Classify each hit: 🔴 live credential · 🟠 likely real · 🟢 test/example
 ## 5. Prevent
 
 Offer to add a pre-commit hook (for example `gitleaks protect --staged`) and a CI secret-scanning step.
+
+## Rules
+
+- Never print, log or commit full secret values. Always redact them.
+- Rotate first, clean up second. Never force-push or rewrite history without explicit confirmation.
+- Treat anything ambiguous as real until the user confirms it's a placeholder.
